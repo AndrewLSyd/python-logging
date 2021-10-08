@@ -1,0 +1,568 @@
+2021-10-07 01:05:42,626 - root - INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 01:05:42,627 - google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 01:05:42,632 - root - INFO - bqclients and bqstorage clients instantiated
+2021-10-07 01:05:42,632 - google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 01:05:42,633 - google.cloud.bigquery.opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 01:05:42,633 - urllib3.util.retry - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 01:05:42,634 - google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 01:05:42,637 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 01:05:42,698 - urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 01:05:42,700 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 01:05:42,869 - urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 01:05:42,870 - root - WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 01:05:42,871 - root - WARNING - rerunning
+2021-10-07 01:05:42,871 - root - DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 01:05:42,872 - urllib3.util.retry - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 01:05:42,872 - google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 01:05:42,873 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 01:05:42,942 - urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 01:05:42,945 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 01:05:43,275 - urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "POST /bigquery/v2/projects/wx-bq-poc/jobs?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 01:05:53,226 - urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/queries/5e4874e6-1c3d-441f-a203-a68151376d6b?maxResults=0&location=US&prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 01:05:53,227 - google.api_core.retry - DEBUG - Retrying due to , sleeping 0.7s ...
+2021-10-07 01:06:03,814 - urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/queries/5e4874e6-1c3d-441f-a203-a68151376d6b?maxResults=0&location=US&prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 01:06:03,815 - google.api_core.retry - DEBUG - Retrying due to , sleeping 1.7s ...
+2021-10-07 01:06:15,280 - urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/queries/5e4874e6-1c3d-441f-a203-a68151376d6b?maxResults=0&location=US&prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 01:06:15,281 - google.api_core.retry - DEBUG - Retrying due to , sleeping 6.5s ...
+2021-10-07 01:06:31,730 - urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/queries/5e4874e6-1c3d-441f-a203-a68151376d6b?maxResults=0&location=US&prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 01:06:31,731 - google.api_core.retry - DEBUG - Retrying due to , sleeping 15.7s ...
+2021-10-07 01:06:33,752 - root - INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 01:06:33,752 - google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 01:06:33,756 - root - INFO - bqclients and bqstorage clients instantiated
+2021-10-07 01:06:33,756 - google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 01:06:33,757 - google.cloud.bigquery.opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 01:06:33,757 - urllib3.util.retry - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 01:06:33,758 - google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 01:06:33,761 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 01:06:33,822 - urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 01:06:33,824 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 01:06:33,988 - urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 01:06:33,989 - root - WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 01:06:33,989 - root - WARNING - rerunning
+2021-10-07 01:06:33,989 - root - DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 01:06:33,989 - root - INFO - all done
+2021-10-07 05:21:34,248 - example_1.py - root - INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:21:34,248 - _default.py - google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:21:34,255 - example_1.py - root - INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:21:34,255 - _default.py - google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:21:34,256 - opentelemetry_tracing.py - google.cloud.bigquery.opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:21:34,257 - retry.py - urllib3.util.retry - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:21:34,257 - requests.py - google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:21:34,261 - connectionpool.py - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:21:34,322 - connectionpool.py - urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:21:34,324 - connectionpool.py - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:21:34,466 - connectionpool.py - urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:21:34,467 - utils.py - root - WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:21:34,467 - example_1.py - root - WARNING - rerunning
+2021-10-07 05:21:34,467 - example_1.py - root - DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:21:34,467 - example_1.py - root - INFO - all done
+2021-10-07 05:22:01,172 | example_1.py | root - INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:22:01,172 | _default.py | google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:22:01,177 | example_1.py | root - INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:22:01,177 | _default.py | google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:22:01,178 | opentelemetry_tracing.py | google.cloud.bigquery.opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:22:01,179 | retry.py | urllib3.util.retry - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:22:01,179 | requests.py | google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:22:01,183 | connectionpool.py | urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:22:01,261 | connectionpool.py | urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:22:01,263 | connectionpool.py | urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:22:01,420 | connectionpool.py | urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:22:01,421 | utils.py | root - WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:22:01,421 | example_1.py | root - WARNING - rerunning
+2021-10-07 05:22:01,421 | example_1.py | root - DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:22:01,421 | example_1.py | root - INFO - all done
+2021-10-07 05:22:03,962 | example_1.py | root - INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:22:03,962 | _default.py | google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:22:03,967 | example_1.py | root - INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:22:03,967 | _default.py | google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:22:03,968 | opentelemetry_tracing.py | google.cloud.bigquery.opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:22:03,969 | retry.py | urllib3.util.retry - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:22:03,969 | requests.py | google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:22:03,973 | connectionpool.py | urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:22:04,041 | connectionpool.py | urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:22:04,043 | connectionpool.py | urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:22:04,154 | connectionpool.py | urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:22:04,155 | utils.py | root - WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:22:04,155 | example_1.py | root - WARNING - rerunning
+2021-10-07 05:22:04,155 | example_1.py | root - DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:22:04,155 | example_1.py | root - INFO - all done
+2021-10-07 05:22:31,653 | example_1.py | root - INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:22:31,654 | _default.py | google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:22:31,659 | example_1.py | root - INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:22:31,659 | _default.py | google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:22:31,660 | opentelemetry_tracing.py | google.cloud.bigquery.opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:22:31,660 | retry.py | urllib3.util.retry - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:22:31,661 | requests.py | google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:22:31,664 | connectionpool.py | urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:22:31,736 | connectionpool.py | urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:22:31,738 | connectionpool.py | urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:22:31,855 | connectionpool.py | urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:22:31,857 | utils.py | root - WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:22:31,858 | example_1.py | root - WARNING - rerunning
+2021-10-07 05:22:31,858 | example_1.py | root - DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:22:31,858 | example_1.py | root - INFO - all done
+2021-10-07 05:23:14,205 | example_1.py | root - INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:23:14,205 | _default.py | google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:23:14,210 | example_1.py | root - INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:23:14,210 | _default.py | google.auth._default - DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:23:14,211 | opentelemetry_tracing.py | google.cloud.bigquery.opentelemetry_tracing - DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:23:14,211 | retry.py | urllib3.util.retry - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:23:14,212 | requests.py | google.auth.transport.requests - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:23:14,215 | connectionpool.py | urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:23:14,298 | connectionpool.py | urllib3.connectionpool - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:23:14,300 | connectionpool.py | urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:23:14,443 | connectionpool.py | urllib3.connectionpool - DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:23:14,444 | utils.py | root - WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:23:14,445 | example_1.py | root - WARNING - rerunning
+2021-10-07 05:23:14,445 | example_1.py | root - DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:23:14,445 | example_1.py | root - INFO - all done
+2021-10-07 05:23:25,490 | example_1.py | root : INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:23:25,490 | _default.py | google.auth._default : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:23:25,495 | example_1.py | root : INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:23:25,495 | _default.py | google.auth._default : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:23:25,497 | opentelemetry_tracing.py | google.cloud.bigquery.opentelemetry_tracing : DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:23:25,497 | retry.py | urllib3.util.retry : DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:23:25,497 | requests.py | google.auth.transport.requests : DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:23:25,501 | connectionpool.py | urllib3.connectionpool : DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:23:25,561 | connectionpool.py | urllib3.connectionpool : DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:23:25,563 | connectionpool.py | urllib3.connectionpool : DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:23:25,723 | connectionpool.py | urllib3.connectionpool : DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:23:25,724 | utils.py | root : WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:23:25,725 | example_1.py | root : WARNING - rerunning
+2021-10-07 05:23:25,725 | example_1.py | root : DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:23:25,725 | example_1.py | root : INFO - all done
+2021-10-07 05:23:36,768 | example_1.py | root | 62 : INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:23:36,769 | _default.py | google.auth._default | 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:23:36,774 | example_1.py | root | 73 : INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:23:36,774 | _default.py | google.auth._default | 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:23:36,776 | opentelemetry_tracing.py | google.cloud.bigquery.opentelemetry_tracing | 67 : DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:23:36,777 | retry.py | urllib3.util.retry | 210 : DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:23:36,777 | requests.py | google.auth.transport.requests | 177 : DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:23:36,781 | connectionpool.py | urllib3.connectionpool | 813 : DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:23:36,850 | connectionpool.py | urllib3.connectionpool | 393 : DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:23:36,852 | connectionpool.py | urllib3.connectionpool | 813 : DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:23:36,980 | connectionpool.py | urllib3.connectionpool | 393 : DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:23:36,982 | utils.py | root | 27 : WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:23:36,982 | example_1.py | root | 76 : WARNING - rerunning
+2021-10-07 05:23:36,982 | example_1.py | root | 102 : DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:23:36,982 | example_1.py | root | 110 : INFO - all done
+2021-10-07 05:23:54,888 | example_1.py | line 62 : INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:23:54,889 | _default.py | line 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:23:54,895 | example_1.py | line 73 : INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:23:54,895 | _default.py | line 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:23:54,896 | opentelemetry_tracing.py | line 67 : DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:23:54,897 | retry.py | line 210 : DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:23:54,897 | requests.py | line 177 : DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:23:54,901 | connectionpool.py | line 813 : DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:23:54,959 | connectionpool.py | line 393 : DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:23:54,961 | connectionpool.py | line 813 : DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:23:55,104 | connectionpool.py | line 393 : DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:23:55,105 | utils.py | line 27 : WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:23:55,105 | example_1.py | line 76 : WARNING - rerunning
+2021-10-07 05:23:55,105 | example_1.py | line 102 : DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:23:55,106 | example_1.py | line 110 : INFO - all done
+2021-10-07 05:24:24,040 | example_1.py | <module> | line 62 : INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:24:24,041 | _default.py | _get_explicit_environ_credentials | line 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:24:24,046 | example_1.py | <module> | line 73 : INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:24:24,046 | _default.py | _get_explicit_environ_credentials | line 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:24:24,047 | opentelemetry_tracing.py | create_span | line 67 : DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:24:24,047 | retry.py | from_int | line 210 : DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:24:24,048 | requests.py | __call__ | line 177 : DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:24:24,051 | connectionpool.py | _new_conn | line 813 : DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:24:24,113 | connectionpool.py | _make_request | line 393 : DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:24:24,115 | connectionpool.py | _new_conn | line 813 : DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:24:24,250 | connectionpool.py | _make_request | line 393 : DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:24:24,251 | utils.py | check_if_BQ_table_exists | line 27 : WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:24:24,252 | example_1.py | <module> | line 76 : WARNING - rerunning
+2021-10-07 05:24:24,252 | example_1.py | <module> | line 102 : DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:24:24,252 | example_1.py | <module> | line 110 : INFO - all done
+2021-10-07 05:24:53,731 | example_1.py | function: <module> | line: 62 : INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:24:53,731 | _default.py | function: _get_explicit_environ_credentials | line: 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:24:53,735 | example_1.py | function: <module> | line: 73 : INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:24:53,735 | _default.py | function: _get_explicit_environ_credentials | line: 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:24:53,736 | opentelemetry_tracing.py | function: create_span | line: 67 : DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:24:53,736 | retry.py | function: from_int | line: 210 : DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:24:53,736 | requests.py | function: __call__ | line: 177 : DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:24:53,739 | connectionpool.py | function: _new_conn | line: 813 : DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:24:53,806 | connectionpool.py | function: _make_request | line: 393 : DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:24:53,807 | connectionpool.py | function: _new_conn | line: 813 : DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:24:53,932 | connectionpool.py | function: _make_request | line: 393 : DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:24:53,934 | utils.py | function: check_if_BQ_table_exists | line: 27 : WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:24:53,934 | example_1.py | function: <module> | line: 76 : WARNING - rerunning
+2021-10-07 05:24:53,934 | example_1.py | function: <module> | line: 102 : DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:24:53,934 | example_1.py | function: <module> | line: 110 : INFO - all done
+2021-10-07 05:25:23,405 | example_1.py | modules: example_1 | function: <module> | line: 62 : INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:25:23,406 | _default.py | modules: _default | function: _get_explicit_environ_credentials | line: 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:25:23,410 | example_1.py | modules: example_1 | function: <module> | line: 73 : INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:25:23,410 | _default.py | modules: _default | function: _get_explicit_environ_credentials | line: 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:25:23,411 | opentelemetry_tracing.py | modules: opentelemetry_tracing | function: create_span | line: 67 : DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:25:23,411 | retry.py | modules: retry | function: from_int | line: 210 : DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:25:23,411 | requests.py | modules: requests | function: __call__ | line: 177 : DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:25:23,414 | connectionpool.py | modules: connectionpool | function: _new_conn | line: 813 : DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:25:23,476 | connectionpool.py | modules: connectionpool | function: _make_request | line: 393 : DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:25:23,478 | connectionpool.py | modules: connectionpool | function: _new_conn | line: 813 : DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:25:23,589 | connectionpool.py | modules: connectionpool | function: _make_request | line: 393 : DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:25:23,590 | utils.py | modules: utils | function: check_if_BQ_table_exists | line: 27 : WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:25:23,591 | example_1.py | modules: example_1 | function: <module> | line: 76 : WARNING - rerunning
+2021-10-07 05:25:23,591 | example_1.py | modules: example_1 | function: <module> | line: 102 : DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:25:23,591 | example_1.py | modules: example_1 | function: <module> | line: 110 : INFO - all done
+2021-10-07 05:25:36,764 | example_1.py | function: <module> | line: 62 : INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:25:36,765 | _default.py | function: _get_explicit_environ_credentials | line: 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:25:36,770 | example_1.py | function: <module> | line: 73 : INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:25:36,770 | _default.py | function: _get_explicit_environ_credentials | line: 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:25:36,771 | opentelemetry_tracing.py | function: create_span | line: 67 : DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:25:36,771 | retry.py | function: from_int | line: 210 : DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:25:36,771 | requests.py | function: __call__ | line: 177 : DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:25:36,774 | connectionpool.py | function: _new_conn | line: 813 : DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:25:36,836 | connectionpool.py | function: _make_request | line: 393 : DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:25:36,838 | connectionpool.py | function: _new_conn | line: 813 : DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:25:37,012 | connectionpool.py | function: _make_request | line: 393 : DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:25:37,013 | utils.py | function: check_if_BQ_table_exists | line: 27 : WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:25:37,013 | example_1.py | function: <module> | line: 76 : WARNING - rerunning
+2021-10-07 05:25:37,014 | example_1.py | function: <module> | line: 102 : DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:25:37,014 | example_1.py | function: <module> | line: 110 : INFO - all done
+2021-10-07 05:26:18,943 | example_1.py | function: <module> | line: 62 : INFO - os.environ['GOOGLE_CLOUD_PROJECT'] = wx-bq-poc
+2021-10-07 05:26:18,943 | _default.py | function: _get_explicit_environ_credentials | line: 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:26:18,949 | example_1.py | function: <module> | line: 73 : INFO - bqclients and bqstorage clients instantiated
+2021-10-07 05:26:18,949 | _default.py | function: _get_explicit_environ_credentials | line: 205 : DEBUG - Checking adc.json for explicit credentials as part of auth process...
+2021-10-07 05:26:18,950 | opentelemetry_tracing.py | function: create_span | line: 67 : DEBUG - This service is instrumented using OpenTelemetry. OpenTelemetry could not be imported; please add opentelemetry-api and opentelemetry-instrumentation packages in order to get BigQuery Tracing data.
+2021-10-07 05:26:18,951 | retry.py | function: from_int | line: 210 : DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2021-10-07 05:26:18,951 | requests.py | function: __call__ | line: 177 : DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2021-10-07 05:26:18,955 | connectionpool.py | function: _new_conn | line: 813 : DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2021-10-07 05:26:19,015 | connectionpool.py | function: _make_request | line: 393 : DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2021-10-07 05:26:19,017 | connectionpool.py | function: _new_conn | line: 813 : DEBUG - Starting new HTTPS connection (1): bigquery.googleapis.com:443
+2021-10-07 05:26:19,142 | connectionpool.py | function: _make_request | line: 393 : DEBUG - https://bigquery.googleapis.com:443 "GET /bigquery/v2/projects/wx-bq-poc/datasets/personal/tables/AL_tmp_inc_sales_20210927?prettyPrint=false HTTP/1.1" 200 None
+2021-10-07 05:26:19,142 | utils.py | function: check_if_BQ_table_exists | line: 27 : WARNING - Table wx-bq-poc.personal.AL_tmp_inc_sales_20210927 already exists.
+2021-10-07 05:26:19,143 | example_1.py | function: <module> | line: 76 : WARNING - rerunning
+2021-10-07 05:26:19,143 | example_1.py | function: <module> | line: 102 : DEBUG - 
+CREATE OR REPLACE TABLE
+  `wx-bq-poc.personal.AL_tmp_inc_sales_20210927` AS (
+  SELECT
+    fw_start_date,
+    campaign_code,
+    campaign_start_date,
+    COUNT(DISTINCT crn) AS distinct_crn,
+    SUM(inc_sales) AS inc_sales
+  FROM
+    `Attribution_Safari_GT_output.Safari_crn_level_game_theory_output_safari_full_promo_halo_post_current`
+  WHERE
+    pph = 'promo'
+    AND fw_start_date = '2021-09-27'
+  GROUP BY
+    1,
+    2,
+    3
+  ORDER BY
+    1,
+    2,
+    3 );
+
+2021-10-07 05:26:19,143 | example_1.py | function: <module> | line: 110 : INFO - all done
